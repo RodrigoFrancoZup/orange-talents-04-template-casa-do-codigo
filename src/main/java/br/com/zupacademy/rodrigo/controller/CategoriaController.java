@@ -1,6 +1,7 @@
 package br.com.zupacademy.rodrigo.controller;
 
 import br.com.zupacademy.rodrigo.modelo.Categoria;
+import br.com.zupacademy.rodrigo.modelo.dto.CategoriaDto;
 import br.com.zupacademy.rodrigo.modelo.form.CategoriaForm;
 import br.com.zupacademy.rodrigo.repository.CategoriaRepository;
 import br.com.zupacademy.rodrigo.validator.ProibeNomeDuplicadoCategoriaValidator;
@@ -30,9 +31,9 @@ public class CategoriaController {
 
     @PostMapping
     @Transactional
-        public ResponseEntity<Categoria> cadastro(@RequestBody @Valid CategoriaForm form){
+        public ResponseEntity<CategoriaDto> cadastro(@RequestBody @Valid CategoriaForm form){
         Categoria categoria = form.convertCategoriaFormParaCategoria();
         categoriaRepository.save(categoria);
-        return ResponseEntity.ok(categoria);
+        return ResponseEntity.ok(new CategoriaDto(categoria));
     }
 }
