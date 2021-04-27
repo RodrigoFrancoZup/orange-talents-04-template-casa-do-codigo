@@ -1,5 +1,6 @@
 package br.com.zupacademy.rodrigo.modelo.form;
 
+import br.com.zupacademy.rodrigo.annotations.UniqueValue;
 import br.com.zupacademy.rodrigo.modelo.Categoria;
 
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ public class CategoriaForm {
     private Long id;
 
     @NotBlank
+    @UniqueValue(domainClass = Categoria.class, fieldName = "nome")
     private String nome;
 
     public Categoria convertCategoriaFormParaCategoria(){

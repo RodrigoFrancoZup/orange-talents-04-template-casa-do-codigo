@@ -21,6 +21,10 @@ public class AutorController {
     @Autowired
     private AutorRepository autorRepository;
 
+    /*
+    - Validação agora será por uma anotação genérica
+      que vamos criar!
+
     @Autowired
     private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
 
@@ -28,6 +32,7 @@ public class AutorController {
     public void init(WebDataBinder binder){
         binder.addValidators(proibeEmailDuplicadoAutorValidator);
     }
+     */
 
     @PostMapping
     @Transactional
