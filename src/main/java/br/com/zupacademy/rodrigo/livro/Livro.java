@@ -1,12 +1,11 @@
-package br.com.zupacademy.rodrigo.modelo;
+package br.com.zupacademy.rodrigo.livro;
 
-import br.com.zupacademy.rodrigo.annotations.UniqueValue;
+import br.com.zupacademy.rodrigo.autor.Autor;
+import br.com.zupacademy.rodrigo.categoria.Categoria;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 public class Livro {
@@ -32,13 +31,15 @@ public class Livro {
     public Livro() {
     }
 
-    public Livro(String titulo, String resumo, BigDecimal preco, Long numeroDePaginas,
-                 String isbn, Autor autor, Categoria categoria) {
+    public Livro(String titulo, String resumo, String sumario ,BigDecimal preco, Long numeroDePaginas,
+                 String isbn, LocalDate dataDePublicacao ,Autor autor, Categoria categoria) {
         this.titulo = titulo;
         this.resumo = resumo;
+        this.sumario = sumario;
         this.preco = preco;
         this.numeroDePaginas = numeroDePaginas;
         this.isbn = isbn;
+        this.dataDePublicacao = dataDePublicacao;
         this.autor = autor;
         this.categoria = categoria;
     }
@@ -85,11 +86,5 @@ public class Livro {
         return autor;
     }
 
-    public void setSumario(String sumario) {
-        this.sumario = sumario;
-    }
 
-    public void setDataDePublicacao(LocalDate dataDePublicacao) {
-        this.dataDePublicacao = dataDePublicacao;
-    }
 }

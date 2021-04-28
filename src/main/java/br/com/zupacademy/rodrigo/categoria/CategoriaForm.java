@@ -1,7 +1,7 @@
-package br.com.zupacademy.rodrigo.modelo.form;
+package br.com.zupacademy.rodrigo.categoria;
 
 import br.com.zupacademy.rodrigo.annotations.UniqueValue;
-import br.com.zupacademy.rodrigo.modelo.Categoria;
+import br.com.zupacademy.rodrigo.categoria.Categoria;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,23 +18,20 @@ public class CategoriaForm {
     @UniqueValue(domainClass = Categoria.class, fieldName = "nome")
     private String nome;
 
+    public CategoriaForm(Long id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     public Categoria convertCategoriaFormParaCategoria(){
         return new Categoria(nome);
     }
 
-    public Long getId() {
-        return id;
-    }
-
+    /*
+     * Esse método é utilizado na validação
+     * que verifica se nome de categoria já existe.
+     */
     public String getNome() {
         return nome;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 }

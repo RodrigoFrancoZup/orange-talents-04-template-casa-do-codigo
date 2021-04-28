@@ -1,8 +1,8 @@
-package br.com.zupacademy.rodrigo.modelo.dto;
+package br.com.zupacademy.rodrigo.autor;
 
-import br.com.zupacademy.rodrigo.modelo.Autor;
 import org.hibernate.validator.constraints.Length;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,7 +11,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-public class AutorDto {
+@Entity
+public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,12 +32,14 @@ public class AutorDto {
     @NotNull
     private LocalDateTime instanteCriacao = LocalDateTime.now();
 
-    public AutorDto(Autor autor){
-        this.id = autor.getId();
-        this.nome = autor.getNome();
-        this.email = autor.getEmail();
-        this.descricao = autor.getDescricao();
-        this.instanteCriacao = autor.getInstanteCriacao();
+    public Autor(@NotBlank String nome, @NotBlank @Email String email, @NotBlank @Length(max = 400) String descricao){
+        this.nome = nome;
+        this.email = email;
+        this.descricao = descricao;
+    }
+    @Deprecated
+    public Autor(){
+
     }
 
     public Long getId() {

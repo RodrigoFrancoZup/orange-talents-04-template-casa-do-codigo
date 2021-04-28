@@ -1,9 +1,5 @@
-package br.com.zupacademy.rodrigo.controller;
+package br.com.zupacademy.rodrigo.categoria;
 
-import br.com.zupacademy.rodrigo.modelo.Categoria;
-import br.com.zupacademy.rodrigo.modelo.dto.CategoriaDto;
-import br.com.zupacademy.rodrigo.modelo.form.CategoriaForm;
-import br.com.zupacademy.rodrigo.repository.CategoriaRepository;
 import br.com.zupacademy.rodrigo.validator.ProibeNomeDuplicadoCategoriaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

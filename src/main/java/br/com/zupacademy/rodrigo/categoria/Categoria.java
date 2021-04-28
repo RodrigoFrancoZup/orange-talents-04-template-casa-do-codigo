@@ -1,4 +1,4 @@
-package br.com.zupacademy.rodrigo.modelo;
+package br.com.zupacademy.rodrigo.categoria;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,6 +1,6 @@
 package br.com.zupacademy.rodrigo.validator;
 
-import br.com.zupacademy.rodrigo.modelo.form.LivroForm;
+import br.com.zupacademy.rodrigo.livro.LivroForm;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

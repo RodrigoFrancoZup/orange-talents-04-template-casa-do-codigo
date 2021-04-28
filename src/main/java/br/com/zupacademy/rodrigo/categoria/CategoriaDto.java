@@ -1,6 +1,4 @@
-package br.com.zupacademy.rodrigo.modelo.dto;
-
-import br.com.zupacademy.rodrigo.modelo.Categoria;
+package br.com.zupacademy.rodrigo.categoria;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

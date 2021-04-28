@@ -1,6 +1,7 @@
-package br.com.zupacademy.rodrigo.modelo.form;
+package br.com.zupacademy.rodrigo.autor;
 
-import br.com.zupacademy.rodrigo.modelo.Autor;
+import br.com.zupacademy.rodrigo.annotations.UniqueValue;
+import br.com.zupacademy.rodrigo.autor.Autor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
@@ -13,37 +14,28 @@ public class AutorForm {
 
     @NotBlank
     @Email
+    @UniqueValue(domainClass = Autor.class, fieldName = "email")
     private String email;
 
     @NotBlank
     @Length(max = 400)
     private String descricao;
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
+    public AutorForm(String nome, String email, String descricao) {
         this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
     public Autor convertAutorFormParaAutor(){
         return new Autor(this.nome, this.email, this.descricao );
+    }
+
+    /*
+     * Essse metodo foi utilizado na validacao
+     * que verifica se e-maiul já foi utilizado
+     */
+    public String getEmail() {
+        return email;
     }
 }

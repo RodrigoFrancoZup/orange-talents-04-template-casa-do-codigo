@@ -1,8 +1,8 @@
 package br.com.zupacademy.rodrigo.validator;
 
-import br.com.zupacademy.rodrigo.modelo.Autor;
-import br.com.zupacademy.rodrigo.modelo.form.AutorForm;
-import br.com.zupacademy.rodrigo.repository.AutorRepository;
+import br.com.zupacademy.rodrigo.autor.Autor;
+import br.com.zupacademy.rodrigo.autor.AutorForm;
+import br.com.zupacademy.rodrigo.autor.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

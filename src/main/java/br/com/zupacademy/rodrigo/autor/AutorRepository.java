@@ -1,6 +1,6 @@
-package br.com.zupacademy.rodrigo.repository;
+package br.com.zupacademy.rodrigo.autor;
 
-import br.com.zupacademy.rodrigo.modelo.Autor;
+import br.com.zupacademy.rodrigo.autor.Autor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,15 +1,9 @@
-package br.com.zupacademy.rodrigo.controller;
+package br.com.zupacademy.rodrigo.livro;
 
-import br.com.zupacademy.rodrigo.modelo.Livro;
-import br.com.zupacademy.rodrigo.modelo.dto.LivroDto;
-import br.com.zupacademy.rodrigo.modelo.form.LivroForm;
-import br.com.zupacademy.rodrigo.repository.AutorRepository;
-import br.com.zupacademy.rodrigo.repository.CategoriaRepository;
-import br.com.zupacademy.rodrigo.repository.LivroRepository;
-import br.com.zupacademy.rodrigo.validator.ProibeDataDePublicacaoDeLivroSerPassadaValidator;
+import br.com.zupacademy.rodrigo.autor.AutorRepository;
+import br.com.zupacademy.rodrigo.categoria.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -28,6 +22,11 @@ public class LivroController {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
+    /*
+
+    Vamos substituir essa validação pela annotation @Future
+    no atributo dataDePubiclacao da classe LivroForm
+
     @Autowired
     private ProibeDataDePublicacaoDeLivroSerPassadaValidator proibeDataDePublicacaoDeLivroSerPassadaValidator;
 
@@ -35,6 +34,7 @@ public class LivroController {
     public void init(WebDataBinder binder){
         binder.addValidators(proibeDataDePublicacaoDeLivroSerPassadaValidator);
     }
+     */
 
     @PostMapping
     @Transactional

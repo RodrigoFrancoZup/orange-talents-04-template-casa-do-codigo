@@ -1,13 +1,7 @@
-package br.com.zupacademy.rodrigo.controller;
+package br.com.zupacademy.rodrigo.autor;
 
-import br.com.zupacademy.rodrigo.modelo.Autor;
-import br.com.zupacademy.rodrigo.modelo.dto.AutorDto;
-import br.com.zupacademy.rodrigo.modelo.form.AutorForm;
-import br.com.zupacademy.rodrigo.repository.AutorRepository;
-import br.com.zupacademy.rodrigo.validator.ProibeEmailDuplicadoAutorValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
