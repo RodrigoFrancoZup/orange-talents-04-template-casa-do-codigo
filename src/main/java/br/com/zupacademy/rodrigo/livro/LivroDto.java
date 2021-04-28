@@ -2,6 +2,8 @@ package br.com.zupacademy.rodrigo.livro;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LivroDto {
 
@@ -67,5 +69,13 @@ public class LivroDto {
 
     public Long getAutorId() {
         return autorId;
+    }
+
+    public static List<LivroDto> convertListaDeLivroParaListaDeLivroDto(List<Livro> livros){
+        List<LivroDto> livrosDto = new ArrayList<>();
+        for (Livro livro : livros){
+            livrosDto.add(new LivroDto(livro));
+        }
+        return livrosDto;
     }
 }
