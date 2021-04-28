@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/livro")
@@ -50,6 +51,15 @@ public class LivroController {
         List<Livro> livros = livroRepository.findAll();
         List<LivroDto> livrosDto = LivroDto.convertListaDeLivroParaListaDeLivroDto(livros);
         return ResponseEntity.ok(livrosDto);
+    }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> detalhe(@PathVariable Long id){
+        Optional<Livro> livro = livroRepository.findById(id);
+        if(livro.isPresent()){
+            return ResponseEntity.ok(new LivroDetalheResponse(livro.get()));
+        }else{
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
