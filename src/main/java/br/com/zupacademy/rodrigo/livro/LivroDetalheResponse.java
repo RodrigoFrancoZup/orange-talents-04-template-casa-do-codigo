@@ -1,5 +1,7 @@
 package br.com.zupacademy.rodrigo.livro;
 
+import br.com.zupacademy.rodrigo.autor.AutorDetalheResponse;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -14,8 +16,7 @@ public class LivroDetalheResponse {
     private String isbn;
     private LocalDate dataDePublicacao;
     private String categoria;
-    private String autor;
-    private String emailAutor;
+    private AutorDetalheResponse autor;
     private String descricaoAutor;
 
     public LivroDetalheResponse(Livro livro) {
@@ -28,8 +29,7 @@ public class LivroDetalheResponse {
         this.isbn = livro.getIsbn();
         this.dataDePublicacao = livro.getDataDePublicacao();
         this.categoria = livro.getCategoria().getNome();
-        this.autor = livro.getAutor().getNome();
-        this.emailAutor = livro.getAutor().getEmail();
+        this.autor = new AutorDetalheResponse(livro.getAutor());
         this.descricaoAutor = livro.getAutor().getDescricao();
     }
 
@@ -69,13 +69,10 @@ public class LivroDetalheResponse {
         return categoria;
     }
 
-    public String getAutor() {
+    public AutorDetalheResponse getAutor() {
         return autor;
     }
 
-    public String getEmailAutor() {
-        return emailAutor;
-    }
 
     public String getDescricaoAutor() {
         return descricaoAutor;
