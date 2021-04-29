@@ -35,6 +35,7 @@ public class ClienteController {
     @PostMapping
     @Transactional
     public ResponseEntity<ClienteResponse> cadastro(@RequestBody @Valid ClienteRequest clienteRequest) {
+        System.out.println(clienteRequest.getIdEstado());
         Cliente cliente = clienteRequest.converteClienteRequestParaCliente(estadoRepository, paisRepository);
         clienteRepository.save(cliente);
         return ResponseEntity.ok(new ClienteResponse(cliente));

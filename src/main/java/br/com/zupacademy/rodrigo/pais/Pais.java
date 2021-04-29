@@ -28,4 +28,19 @@ public class Pais {
     public String getNome() {
         return nome;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Pais pais = (Pais) o;
+
+        return nome != null ? nome.equals(pais.nome) : pais.nome == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return nome != null ? nome.hashCode() : 0;
+    }
 }

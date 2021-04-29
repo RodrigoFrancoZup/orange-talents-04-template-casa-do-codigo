@@ -35,4 +35,10 @@ public class Estado {
     public Pais getPais() {
         return pais;
     }
+
+    public void verificaSeuPais(Pais pais) {
+        if(!this.pais.equals(pais)){
+            throw  new IllegalArgumentException();
+        }
+    }
 }

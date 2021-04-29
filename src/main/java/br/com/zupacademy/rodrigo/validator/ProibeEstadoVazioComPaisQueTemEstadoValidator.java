@@ -28,7 +28,7 @@ public class ProibeEstadoVazioComPaisQueTemEstadoValidator implements Validator 
         }
         ClienteRequest request = (ClienteRequest) target;
         List<Estado> estado = estadoRepository.findByPaisId(request.getIdPais());
-        if(estado.size() >= 1){
+        if(estado.size() >= 1 && request.getIdEstado() == null) {
             errors.rejectValue("idEstado", null, "Para o seu Páis o estado é obrigatório!");
         }
     }

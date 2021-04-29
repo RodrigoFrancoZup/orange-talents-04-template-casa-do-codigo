@@ -1,5 +1,6 @@
 package br.com.zupacademy.rodrigo.livro;
 
+import br.com.zupacademy.rodrigo.annotations.ExistsId;
 import br.com.zupacademy.rodrigo.annotations.UniqueValue;
 import br.com.zupacademy.rodrigo.autor.Autor;
 import br.com.zupacademy.rodrigo.categoria.Categoria;
@@ -43,6 +44,7 @@ public class LivroForm {
     private Long categoriaId;
 
     @NotNull
+    @ExistsId(domainClass = Autor.class, fieldName = "id")
     private Long autorId;
 
     public LivroForm(String titulo, String resumo, String sumario, BigDecimal preco, Long numeroDePaginas, String isbn, Long categoriaId, Long autorId) {

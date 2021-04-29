@@ -74,6 +74,7 @@ public class ClienteRequest {
         Cliente cliente = new Cliente(this.email, this.nome, this.sobrenome, this.documento, this.endereco, this.complemento, this.cidade, pais, this.telefone, this.cep);
         if(this.idEstado != null){
             Estado estado = estadoRepository.findById(this.idEstado).get();
+            estado.verificaSeuPais(pais);
             cliente.setEstado(estado);
         }
         return cliente;
