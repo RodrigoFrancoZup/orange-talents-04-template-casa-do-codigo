@@ -10,18 +10,19 @@ import javax.validation.constraints.NotBlank;
 
 public class CategoriaForm {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @NotBlank
     @UniqueValue(domainClass = Categoria.class, fieldName = "nome")
     private String nome;
 
-    public CategoriaForm(Long id, String nome) {
-        this.id = id;
+    public CategoriaForm(String nome) {
         this.nome = nome;
     }
+
+    @Deprecated
+    public CategoriaForm(){
+
+    }
+
 
     public Categoria convertCategoriaFormParaCategoria(){
         return new Categoria(nome);
