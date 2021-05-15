@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "e2ad7d3c-4822-4249-9e9b-5901abb0b650",
+		"name": "casa-do-codigo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/autor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Pedro Oliveira\",\r\n    \"email\" : \"pedro@email.com\",\r\n    \"descricao\" : \"Estou fazendo um api.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/autor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"autor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/categoria",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Redes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/categoria",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categoria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/livro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\":\"Titulo do Livro 1\",\r\n    \"resumo\":\"Resumo do Livro 1\",\r\n    \"sumario\":\"Sumario do Livro 1\",\r\n    \"preco\":\" 30\",\r\n    \"numeroDePaginas\":\"150\",\r\n    \"isbn\":\"isbn-book-1\",\r\n    \"dataDePublicacao\": \"09/07/2021\",\r\n    \"categoriaId\":\"1\",\r\n    \"autorId\":\"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/livro",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"livro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/livro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/livro",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"livro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/livro/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/livro/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"livro",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/pais",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Brasil\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pais",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pais"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/estado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"São Paulo\",\r\n    \"idPais\" : \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/estado",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"rodrigo@email.com\",\r\n    \"nome\": \"Rodrigo\",\r\n    \"sobrenome\": \"Franco\",\r\n    \"documento\": \"12345678912\",\r\n    \"endereco\": \"Rua do Palmeiras\",\r\n    \"complemento\": \"Em cima da loja\",\r\n    \"cidade\": \"Pouso Alegre\",\r\n    \"idPais\": \"1\",\r\n    \"idEstado\": \"2\",\r\n    \"telefone\": \"35123456789\",\r\n    \"cep\": \"12034546789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cliente",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cliente"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

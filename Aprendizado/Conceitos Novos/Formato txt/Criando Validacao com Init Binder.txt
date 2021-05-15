@@ -1,0 +1,54 @@
+Criando uma Validção Própria.
+⦁	Como vamos criar uma validação para e-mail único, vamos ter que fazer uma busca de autor por e-mail, então em AutorRepository criar a assinatura de método:
+	Optional<Autor> findByEmail(String email);
+
+	Usamos retorno do tipo Optional, pois pode ou não ter um autor por email 	informado.
+
+⦁	Vamos também usar a seguinte estratégia: existe uma anotação que faz um método ser chamado antes da primeira request que a classe controller irá tratar, no caso é a anotação @InitBinder. Vamos criar um método que terá essa anotação, pois antes de começar a request de cadastrar autor eu quero validar se o e-mail que está vindo já não foi usado. O método será:
+
+	@InitBinder public void init(WebDataBinder binder){
+
+	 }
+
+⦁	Vamos criar na classe o atributo do tipo da validação que vamos cirar, no caso: 
+
+	@Autowired
+	private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
+
+⦁	Dentro desse método vamos chamar o validador que vamos criar:
+	@InitBinder 
+	public void init(WebDataBinder binder){
+		binder.addValidators(proibeEmailDuplicadoAutorValidator);
+	 }
+
+⦁	Dentro do pacote validacao vamos criar a classe ProibeEmailDuplicadoAutorValidator  e essa irá implementar (implements) Validator (do pacote org.springframework.validation.Validator). Temos que anotar essa classe com @Component e implementar os dois métodos da interface. A classe vai ficar assim:
+
+@Component 
+public class ProibeEmailDuplicadoAutorValidator implements Validator { 
+
+@Autowired 
+private AutorRepository autorRepository;
+
+ @Override
+ public boolean supports(Class<?> clazz) { 
+return AutorForm.class.isAssignableFrom(clazz);
+ } 
+
+@Override public void validate(Object target, Errors errors) { 
+if(errors.hasErrors()){ 
+return;
+} 
+AutorForm form = (AutorForm) target; 
+Optional<Autor> possivelAutor = autorRepository.findByEmail(form.getEmail()); 
+if(possivelAutor.isPresent()){
+ errors.rejectValue("email", null, "O e-mail: "+  form.getEmail() + " já está em uso!" ); }
+ }
+ }
+
+No primeiro método no retorno utilizamos a classe que terá seu atributo validado, nesse caso foi AutorForm.
+No segundo método começamos por um if(), verificando se até o momento já não teve outros erros, no caso dos validadores padrões do Spring, se já teve erro vamos parar, não precisamos nem validar nossa regra de e-mail único. Caso ainda não teve erros vamos continuar. Vamos criar o objeto nosso que tem o atributo a ser validado (no nosso caso AutorForm), e para isso basta apontar a referencia para target. Feito isso podemos fazer uma busca por e-mail, pegando o dado do objeto a ser validado. Para finalizar basta ver se a busca teve resposta, se sim vamos criar um erro, passando o nome do campo, um código que deixamos null e a mensagem.
+Obs: Para poder fazer a busca com Repository tivemos que criar nessa classe o objeto: 
+	@Autowired 
+	private AutorRepository autorRepository;
+
+

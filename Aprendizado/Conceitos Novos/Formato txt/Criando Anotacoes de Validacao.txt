@@ -1,0 +1,55 @@
+Criando uma Validção Própria, mas agora utilizando uma tag (Anotação) criado por nós mesmos.
+
+⦁	Do jeito que vamos fazer, a anotação deve sempre ficar em uma classe gerenciada pelo Spring, (DTO ou Form), não podemos utilizar a anotação em uma classe do Hibernate (@Entity), pois resultará em erro no EntityManager;
+
+⦁	Vamos criar a anotação com nome UniqueValue (@UniqueValue) e ao aplicar em um atributo ficará: @UniqueValue(domainClass = NomeDaClasseDeModelo.class, fieldName= "NomeDoAtributoDaClasseDeModelo" 
+	Exemplo de aplicação no atributo String nome da classe CategoriaForm:
+	@UniqueValue(domainClass = Categoria.class, fieldName = "nome")
+	private String nome
+
+⦁	Para criar a implementação dessa anotação. Passo a passo:
+1.	Criar a interface com nome UniqueValue  (mesmo nome da anotação). Ela deve ficar assim:
+
+	@Documented 
+	@Constraint(validatedBy = {UniqueValueValidator.class}) 
+	@Target({ElementType.FIELD}) 
+	@Retention(RetentionPolicy.RUNTIME) 
+	public @interface UniqueValue { 
+	String message() default "{br.com.zupacademy.rodrigo.uniquevalue}"; 
+	Class<?>[] groups() default {};
+	 Class<? extends Payload>[] payload() default {};
+	 String fieldName(); 
+	Class<?> domainClass(); 
+}
+	Obs: O valor da anotação @Constraint é a classe que vamos criar no próximo passo
+
+2- Cria a classe UniqueValueValidator que irá implementar (implements) a interface ConstraintValidator<UniqueValue, Object>. Devemos implementar os métodos dessa interface (initialize e o isValid);
+
+3- Nessa classe criar os atributos:
+@PersistenceContext private EntityManager manager; 
+private String domainAttribute; 
+private Class<?> klass;
+
+4- O método initialize ficará assim:
+public void initialize(UniqueValue params) { 
+domainAttribute = params.fieldName(); 
+klass = params.domainClass(); 
+}
+Obs: Trocamos o nome do parâmetro que esse método recebe para params;
+
+5- O método isValid ficará assim: 
+
+@Override 
+public boolean isValid(Object value, ConstraintValidatorContext context) { 
+Query query = manager.createQuery("SELECT 1 FROM "+klass.getName()+" WHERE "+ domainAttribute+"=:value"); 
+query.setParameter("value", value); 
+List<?> list = query.getResultList(); 
+Assert.state(list.size() <=1, "Foi encontrado mais de um "+klass+" com o atributo "+ domainAttribute + " "+ value); 
+return list.isEmpty(); 
+}
+
+6- Por fim anotar o atributo que queremos validar com @UniqueValue(domainClass = NomDaClasseDoTipoEntity.class, fieldName = "NomeDoAtributoDaClasseTipoEntity")
+
+
+	
+

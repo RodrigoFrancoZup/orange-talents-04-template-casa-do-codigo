@@ -1,0 +1,3 @@
+Nas classes de Modelo anotadas com @Entity devemos evitar o set() e utilizar o construtor para criar o objeto. Os get() vamos precisar, pois ao criar um DTO vamos puxar através do método get().
+
+Nas classes Form (representação que o cliente envia para nossa API) também devemos usar o construtor no lugar do set().  Não precisamos do get().

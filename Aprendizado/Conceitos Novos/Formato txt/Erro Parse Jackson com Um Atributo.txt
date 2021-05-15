@@ -1,0 +1,16 @@
+Quando uma classe de representação (Form/Request) tem apenas um atributo e sem o construtor padão o Jackson dá um erro ao fazer o "parse" dos atributos. Para corrigir isso, podemos:  
+	Opção 1) Dentro do atributo do construtor colocar a anotação: 	@JsonProperty("nomeQueVaiTerNoJson"), por exemplo:
+
+	public Categoria( @JsonProperty("nome" String nome)){
+	}
+
+
+	Opção 2) Anotar o método construtor com @JsonCreator.Mode PROPERTIES ou 	JsonCreator.Mode DELEGATING
+	Exemplo:
+	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+	public Categoria( String nome){
+	}
+
+
+	Opção 3) Criar construtor padão (sem atributo).
+

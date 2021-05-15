@@ -1,0 +1,5 @@
+Fazendo Fork (cópia do repositório):
+1) Entrar no github que eu desejo copiar;
+2) Clicar no botão fork do projeto que desejo colar. Nesse ponto já é criado para mim um repositório com a copia;
+3) Faço o download (git clone) desse repositório para meu PC;
+4) Coloco meu projeto/Continuo a deseneolver o projeto que está dentro da pasta do repositório que fiz o clone.

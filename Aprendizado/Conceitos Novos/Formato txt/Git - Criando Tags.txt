@@ -1,0 +1,24 @@
+Podemos criar Tags para nosso commits. Ela serve como versionamento.
+Comandos para tag:
+	Listar tags = git tag;
+	Listar tags com um filtro = git tag -l "filtro";
+	Criar tag = git tag -a  v1.0 -m "mensagem descritiva"
+	Enviar um Push com Tag = git push origin <tagname> ATENÇÃO Ñ USE MASTER
+	Deletar tag (local) = git tag -d nomeDaTag
+
+	Exemplo - Criando uma Tag e depois fazendo um push para ela:
+	1) Devemos apenas criar a tag;
+	2) Devemos fazer o push normalmente, sem passar a tag;
+	3) Repassar o último commit para a tag:
+		git push origin NomeDaTag
+	
+	Exemplo - Enviando um commit antigo para uma tag:
+	9fceb02  => Id do commit (podemos pega-lo com o comando: git log)
+	git tag -a v1.2 9fceb02 -m "Message here"
+	git push origin v1.2 (força o envio para Tag)
+
+	Ordem correta para envio de um commit para uma tag:
+	criar o commit normalmente (git add . ~~ git commit -m "mensagem" ~~ git push 	origin master);
+	criar a tag (git tag -a v0-0-1 -m "mensagem")
+	evnair o orgin para tag (git push origin v0-0-1).
+
